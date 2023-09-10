@@ -1,0 +1,1 @@
+This repository is to steady about IoT. In this repository, I'm making things that you need to learn IoT as a beginner. I made every program in this repository with circuit description and as much i try to attach images of it.

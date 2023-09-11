@@ -1,0 +1,64 @@
+<mxfile host="65bd71144e">
+    <diagram id="QK9B2nKfIWft0X9lrEGU" name="Page-1">
+        <mxGraphModel dx="1066" dy="920" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="7" value="" style="edgeStyle=none;html=1;curved=1;strokeWidth=14;" edge="1" parent="1" source="2" target="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="" style="edgeStyle=none;curved=1;html=1;strokeWidth=14;" edge="1" parent="1" source="2">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="420.0000000000002" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="IC" style="shadow=0;dashed=0;align=center;html=1;strokeWidth=1;shape=mxgraph.electrical.logic_gates.qfp_ic;labelNames=a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,a1,b1,c1,d1,e1,f1,g1,h1,i1,j1,k1,l1,m1,n1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="50" width="200" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="edgeStyle=none;curved=1;html=1;strokeWidth=14;" edge="1" parent="1" source="4">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="539.9999999999998" y="385" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" style="edgeStyle=none;curved=1;html=1;strokeWidth=14;" edge="1" parent="1" source="4" target="16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="image;html=1;image=img/lib/clip_art/networking/Cloud_Server_128x128.png;strokeWidth=5;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="50" width="200" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=none;curved=1;html=1;strokeWidth=14;" edge="1" parent="1" source="6">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="479.9999999999998" y="460" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="" style="image;html=1;image=img/lib/clip_art/networking/Cloud_Storage_128x128.png;strokeWidth=5;" vertex="1" parent="1">
+                    <mxGeometry x="65" y="350" width="230" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" style="edgeStyle=none;curved=1;html=1;strokeWidth=14;" edge="1" parent="1" source="10">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="529.9999999999998" y="610" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="" style="image;html=1;image=img/lib/clip_art/computers/Database_128x128.png;strokeWidth=5;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="420" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" style="edgeStyle=none;curved=1;html=1;strokeWidth=14;" edge="1" parent="1" source="16">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="779.9999999999998" y="680" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="" style="image;html=1;image=img/lib/clip_art/computers/Server_Tower_128x128.png;strokeWidth=5;" vertex="1" parent="1">
+                    <mxGeometry x="740" y="105" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.4;strokeWidth=1;fillColor=#FFFFFF;fillStyle=auto;direction=west;strokeColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="630" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="image;html=1;image=img/lib/clip_art/computers/Workstation_128x128.png;fillStyle=auto;strokeWidth=5;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="600" width="180" height="130" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

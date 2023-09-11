@@ -8,3 +8,5 @@ The collective network of connected device and the technology that facilitates c
 * Big-data analytics. 
 ## How it works?
 The major objective of IoT device is real-time collection of data and exchange of it.
+
+![working](working.png)

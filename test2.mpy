@@ -1,0 +1,18 @@
+try:
+    import usocket as socket  # socket module allow us to send response over network.
+except:
+    import socket
+
+import network 
+
+import gc 
+gc.collect()
+
+ssid="bps_explore"     # your network/hotspot/ssid name.
+passw="Sagabps@235"    # your network/hotspot/ssid password.
+
+""" in this program I used network with station mode, which mean the board connect
+to the network which we programed to connect """
+sta=network.WLAN(network.STA_IF) # station interface.
+sta.active(True)
+print(sta.scan())

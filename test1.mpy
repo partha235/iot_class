@@ -1,1 +1,2 @@
-print("saga")
+# check your micropython device is working or not.
+print("Hello World!")

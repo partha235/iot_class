@@ -1,2 +1,3 @@
 # check your micropython device is working or not.
+from machine import Pin
 print("Hello World!")

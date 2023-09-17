@@ -1,0 +1,85 @@
+# in this program we are going to control an led over internet.
+try:
+    import usocket as socket    # socket module allow us to send response over network.
+except:
+    import socket
+from utime import sleep_ms,sleep
+import network 
+from machine import Pin
+import gc 
+
+gc.collect()
+
+led=Pin("LED",Pin.OUT)
+ssid="bps_explore"     # your network/hotspot/ssid name.
+passw="Sagabps@235"    # your network/hotspot/ssid password.
+
+""" in this program I used network with station mode, which mean the board connect
+to the network which we programed to connect """
+
+sta= network.WLAN(network.STA_IF) # station interface.
+sta.active(True)
+sta.connect(ssid,passw)  # connecting to network.
+print("connection status : ", sta.isconnected())
+
+
+
+
+while sta.isconnected()==False:
+    pass
+
+if sta.isconnected():
+    print("connection status : ", sta.isconnected())
+    
+sta.ifconfig(('192.168.1.28', '255.255.255.0', '192.168.1.1', '218.248.112.65'))
+
+# (IP,Subnet,Gateway,DNS) here i declared that i need my own ip address; where leaving it 
+# make auto ip address according to our network.
+print(sta.ifconfig())
+
+def web_page():
+    html=""" <html>
+    <head> <title>led_control</title>
+    <meta name="viewport" contant="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="1">
+    </head>
+    <body style="background-color: darkslategray;">
+    <h1 style="color: rgb(137, 185, 226);">Led Control</h1>
+    <a href=\"?led=on\"><button>on</button></a>&nbsp;
+    <a href=\"?led=off\"><button>off</button></a>
+    </body>
+    </html>"""
+    return html
+
+so=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+so.bind(("",80))
+so.listen(5)
+
+while True:
+    try:
+        conn,addr =so.accept()
+        conn.settimeout(3.0)
+        print("connection made %s"% str(addr))
+        request =conn.recv(1024)
+        conn.settimeout(None)
+        request=str(request)
+        print("content = %s"% request)
+        led_on=request.find("/?led=on")
+        led_off=request.find("/?led=off")
+        print("\nled_on = ",led_on)
+        print("\nled_off = ",led_off)
+        if led_on==6:
+            print("\nled_on\n")
+            led.on()
+        if led_off==6:
+            print("\nled off\n")
+            led.off()
+        response=web_page()
+        conn.send('HTTP/1.1 200 OK\n')
+        conn.send('Connection: text/html\n')
+        conn.send('Connection: close\n\n')
+        conn.sendall(response)
+        conn.close()
+    except OSError as e:
+        conn.close()
+        print('Connection closed')

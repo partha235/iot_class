@@ -21,10 +21,15 @@ sta.connect(ssid,passw)  # connecting to network.
 # sleep(1)
 print("connection status : ", sta.isconnected())
 
+
+
+
 while sta.isconnected()==False:
     pass
 
-
+if sta.isconnected():
+    print("connection status : ", sta.isconnected())
+    
 sta.ifconfig(('192.168.1.28', '255.255.255.0', '192.168.1.1', '218.248.112.65'))
 
 # (IP,Subnet,Gateway,DNS) here i declared that i need my own ip address; where leaving it 
@@ -38,7 +43,7 @@ def web_page():
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="refresh"content="1"></head>
     <body>
-        <h1 style="color:coral">BPS EXPLORE</h1>
+        <h1 style="color:coral">Priyanka</h1>
         <p style="color:azure">This is a test program made for IoT class of program file test1.mpy </p>
     </body>
 </html>"""

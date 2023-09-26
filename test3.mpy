@@ -25,6 +25,7 @@ print("connection status : ", sta.isconnected())
 
 
 
+
 while sta.isconnected()==False:
     pass
 

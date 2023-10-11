@@ -9,8 +9,8 @@ import gc
 gc.collect()
 
 x=Pin("LED",Pin.OUT)
-ssid="bps_explore"     # your network/hotspot/ssid name.
-passw="Sagabps@235"    # your network/hotspot/ssid password.
+ssid="hello"     # your network/hotspot/ssid name.
+passw="hello12345"    # your network/hotspot/ssid password.
 
 """ in this program I used network with station mode, which mean the board connect
 to the network which we programed to connect """

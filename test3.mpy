@@ -10,7 +10,7 @@ import gc
 
 gc.collect()
 
-led=Pin("LED",Pin.OUT)
+led=Pin(2,Pin.OUT)
 ssid="hello"     # your network/hotspot/ssid name.
 passw="hello12345"    # your network/hotspot/ssid password.
 
@@ -32,7 +32,7 @@ while sta.isconnected()==False:
 if sta.isconnected():
     print("connection status : ", sta.isconnected())
     
-sta.ifconfig(('192.168.1.28', '255.255.255.0', '192.168.1.1', '218.248.112.65'))
+# sta.ifconfig(('192.168.1.28', '255.255.255.0', '192.168.1.1', '218.248.112.65'))
 
 # (IP,Subnet,Gateway,DNS) here i declared that i need my own ip address; where leaving it 
 # make auto ip address according to our network.

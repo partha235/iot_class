@@ -7,12 +7,17 @@ from utime import sleep_ms,sleep
 import network 
 from machine import Pin
 import gc 
+try:
+    from bps_cre import *
+except:
+    pass
 
 gc.collect()
 
-led=Pin(2,Pin.OUT)
-ssid="hello"     # your network/hotspot/ssid name.
-passw="hello12345"    # your network/hotspot/ssid password.
+led=Pin("LED",Pin.OUT) # for Raspberry Pi Pico
+# led=Pin(2,Pin.OUT)   # for esp boards
+ssid=bps_ssid     # your network/hotspot/ssid name.
+passw=bps_passw    # your network/hotspot/ssid password.
 
 """ in this program I used network with station mode, which mean the board connect
 to the network which we programed to connect """
@@ -20,10 +25,7 @@ to the network which we programed to connect """
 sta= network.WLAN(network.STA_IF) # station interface.
 sta.active(True)
 sta.connect(ssid,passw)  # connecting to network.
-print("connection status : ", sta.isconnected())
-
-
-
+# print("connection status : ", sta.isconnected())
 
 
 while sta.isconnected()==False:
@@ -32,8 +34,8 @@ while sta.isconnected()==False:
 if sta.isconnected():
     print("connection status : ", sta.isconnected())
     
-# sta.ifconfig(('192.168.1.28', '255.255.255.0', '192.168.1.1', '218.248.112.65'))
-
+sta.ifconfig(('192.168.1.23', '255.255.255.0', '192.168.1.1', '218.248.112.65'))
+#  i made above line for my convenient. If you run this code please make it command line erase that line.
 # (IP,Subnet,Gateway,DNS) here i declared that i need my own ip address; where leaving it 
 # make auto ip address according to our network.
 print(sta.ifconfig())
@@ -42,7 +44,7 @@ def web_page():
     html=""" <html>
     <head> <title>led_control</title>
     <meta name="viewport" contant="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="1">
+    <meta http-equiv="refresh" content="10">
     </head>
     <body style="background-color: darkslategray;">
     <h1 style="color: rgb(137, 185, 226);">Led Control</h1>

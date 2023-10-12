@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML Slider Button Program</title>
+</head>
+<body>
+  <h1>HTML Slider Button Program</h1>
+
+  <input type="range" min="0" max="100" value="50" id="mySlider">
+  <p id="sliderValue"></p>
+
+  <script>
+    var slider = document.getElementById("mySlider");
+    slider.oninput = function() {
+      document.getElementById("sliderValue").innerHTML = this.value;
+    }
+  </script>
+</body>
+</html>

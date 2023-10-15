@@ -14,8 +14,8 @@ except:
 
 gc.collect()
 
-led=Pin("LED",Pin.OUT) # for Raspberry Pi Pico
-# led=Pin(2,Pin.OUT)   # for esp boards
+# led=Pin("LED",Pin.OUT) # for Raspberry Pi Pico
+led=Pin(2,Pin.OUT)   # for esp boards
 ssid=bps_ssid     # your network/hotspot/ssid name.
 passw=bps_passw    # your network/hotspot/ssid password.
 
@@ -44,7 +44,7 @@ def web_page():
     html=""" <html>
     <head> <title>led_control</title>
     <meta name="viewport" contant="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="10">
+    <meta http-equiv="refresh" content="1">
     </head>
     <body style="background-color: darkslategray;">
     <h1 style="color: rgb(137, 185, 226);">Led Control</h1>

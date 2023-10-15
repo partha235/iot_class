@@ -9,7 +9,7 @@ from machine import Pin
 import gc 
 gc.collect()
 
-x=Pin("LED",Pin.OUT)
+x=Pin(2,Pin.OUT)
 ssid=bps_ssid     # your network/hotspot/ssid name.
 passw=bps_passw    # your network/hotspot/ssid password.
 
@@ -42,12 +42,13 @@ def web_page():
     html="""<html>
     <head><title>IoT class</title><style>body{background-color: rgb(19, 24, 24);}</style>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="refresh"content="1"></head>
+    <meta http-equiv="refresh"content="0.1"></head>
     <body>
-        <h1 style="color:coral">Priyanka</h1>
+        <h1 style="color:coral">BPS EXPLORE</h1>
         <p style="color:azure">This is a test program made for IoT class of program file test1.mpy </p>
     </body>
-</html>"""
+</html>
+"""
     return html
 
 so=socket.socket(socket.AF_INET,socket.SOCK_STREAM) # AF-> Address Family

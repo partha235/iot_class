@@ -23,7 +23,6 @@ ADAFRUIT_IO_URL     = 'io.adafruit.com'
 ADAFRUIT_USERNAME   = ada_user
 ADAFRUIT_IO_KEY     = ada_tok
 
-
 TOGGLE_FEED_ID      = 'led'
 
 
@@ -38,8 +37,8 @@ print("connection status : ", sta.isconnected())
 while sta.isconnected()==False:
     pass
 
-# if sta.isconnected():
-#     print("connection status : ", sta.isconnected())
+if sta.isconnected():
+    print("connection status : ", sta.isconnected())
 
 
 
@@ -51,10 +50,12 @@ client = MQTTClient(client_id=mqtt_client_id,
                     
 try:            
     client.connect()
-    print("client connected")
+    print("client connected : ", client.is_connected())
 except Exception as e:
     print('could not connect to MQTT server {}{}'.format(type(e).__name__, e))
-    sys.exit()
+    print(mqtt_client_id)
+    # sys.exit()
+
 
 
 def cb(topic, msg):                             # Callback function

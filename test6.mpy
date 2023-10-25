@@ -66,7 +66,7 @@ def cb(topic, msg):                             # Callback function
         x.on()
         
         
-toggle_feed = bytes('{:s}/feeds/{:s}'.format(ADAFRUIT_USERNAME, TOGGLE_FEED_ID), 'utf-8') # format - techiesms/feeds/relay1   
+toggle_feed = bytes('{:s}/feeds/{:s}'.format(ADAFRUIT_USERNAME, TOGGLE_FEED_ID), 'utf-8')   
 client.set_callback(cb)      # Callback function               
 client.subscribe(toggle_feed) # Subscribing to particular topic
 

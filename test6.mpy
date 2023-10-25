@@ -1,0 +1,79 @@
+from umqtt.robust import MQTTClient
+from utime import sleep_ms,sleep
+import network 
+from machine import Pin
+import sys
+import gc 
+try:
+    from bps_cre import *     
+except:
+    pass
+
+gc.collect()
+
+x=Pin(2,Pin.OUT)
+
+mqtt_client_id      = bytes('bps@235', 'utf-8')
+
+ssid=bps_ssid     # your network/hotspot/ssid name.
+passw=bps_passw    # your network/hotspot/ssid password.
+
+
+ADAFRUIT_IO_URL     = 'io.adafruit.com' 
+ADAFRUIT_USERNAME   = 'bps235'
+ADAFRUIT_IO_KEY     = 'aio_OUQI25VQaoRA2BoUF9L39FZdz5vZ'
+
+
+TOGGLE_FEED_ID      = 'led'
+
+
+sta= network.WLAN(network.STA_IF) # station interface.
+sta.active(True)
+print(sta.scan())
+sta.connect(ssid,passw)  # connecting to network.
+sleep_ms(200)
+print("connection status : ", sta.isconnected())
+
+
+while sta.isconnected()==False:
+    pass
+
+# if sta.isconnected():
+#     print("connection status : ", sta.isconnected())
+
+
+
+client = MQTTClient(client_id=mqtt_client_id, 
+                    server=ADAFRUIT_IO_URL, 
+                    user=ADAFRUIT_USERNAME, 
+                    password=ADAFRUIT_IO_KEY,
+                    ssl=False)
+                    
+try:            
+    client.connect()
+    print("client connected")
+except Exception as e:
+    print('could not connect to MQTT server {}{}'.format(type(e).__name__, e))
+    sys.exit()
+
+
+def cb(topic, msg):                             # Callback function
+    print('Received Data:  Topic = {}, Msg = {}'.format(topic, msg))
+    recieved_data = str(msg,'utf-8')            #   Recieving Data
+    if recieved_data=="0":
+        x.off()
+    if recieved_data=="1":
+        x.on()
+        
+        
+toggle_feed = bytes('{:s}/feeds/{:s}'.format(ADAFRUIT_USERNAME, TOGGLE_FEED_ID), 'utf-8') # format - techiesms/feeds/relay1   
+client.set_callback(cb)      # Callback function               
+client.subscribe(toggle_feed) # Subscribing to particular topic
+
+
+while True:
+    try:
+        client.check_msg()                  # non blocking function
+    except :
+        client.disconnect()
+        sys.exit()

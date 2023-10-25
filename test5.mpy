@@ -1,51 +1,65 @@
 # access point
 
 try:
-  import usocket as socket
+    import usocket as socket    # socket module allow us to send response over network.
 except:
-  import socket
-
-import network
-
-import esp
-esp.osdebug(None)
-
-import gc
+    import socket
+from bps_cre import *
+from utime import sleep_ms,sleep
+import network 
+from machine import Pin
+import gc 
 gc.collect()
 
+x=Pin(2,Pin.OUT)
 ssid = 'bps'
-password = 'bps12345'
+password = 'bps12345'  # your network/hotspot/ssid password.
 
+""" in this program I used network with station mode, which mean the board connect
+to the network which we programed to connect """
 ap = network.WLAN(network.AP_IF)
 ap.active(True)
 ap.config(essid=ssid, password=password)
+# connecting to network.
+# sleep(1)
+print("connection status : ", ap.isconnected())
 
-while ap.active() == False:
-  pass
 
-print('Connection successful')
+
+
+while ap.isconnected()==False:
+    pass
+
+if ap.isconnected():
+    print("connection status : ", ap.isconnected())
+    
+# sta.ifconfig(('192.168.1.28', '255.255.255.0', '192.168.1.1', '218.248.112.65'))
+
+# (IP,Subnet,Gateway,DNS) here i declared that i need my own ip address; where leaving it 
+# make auto ip address according to our network.
 print(ap.ifconfig())
 
+# creating a web page
 def web_page():
-  html = """<html>
+    html="""<html>
     <head><title>IoT class</title><style>body{background-color: rgb(19, 24, 24);}</style>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="refresh"content="0.1"></head>
+    <meta http-equiv="refresh"content="1"></head>
     <body>
         <h1 style="color:coral">BPS EXPLORE</h1>
-        <p style="color:azure">This is a test program made for IoT class of program file test5.mpy 
-            where wifi is made in <b>access point mode</b>. </p>
+        <p style="color:azure">This is a test program made for IoT class of program file test1.mpy </p>
     </body>
-    </html>"""
-  return html
+</html>
+"""
+    return html
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind(('', 80))
-s.listen(5)
+so=socket.socket(socket.AF_INET,socket.SOCK_STREAM) # AF-> Address Family
+so.bind(("",80))
+so.listen(3)
 
 while True:
   try:
-    x.toggle()
+    x.value(not x.value())
     if gc.mem_free() < 102000:
       gc.collect()
     conn, addr = so.accept()

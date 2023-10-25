@@ -2,7 +2,7 @@ try:
     import usocket as socket    # socket module allow us to send response over network.
 except:
     import socket
-from bps_cre import *
+from bps_cre import *    # erase this line
 from utime import sleep_ms,sleep
 import network 
 from machine import Pin

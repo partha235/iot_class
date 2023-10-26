@@ -13,15 +13,16 @@ gc.collect()
 
 x=Pin(2,Pin.OUT)
 
-mqtt_client_id      = bytes('bps@235', 'utf-8')
+mqtt_client_id      = bytes('bps', 'utf-8')
 
 ssid=bps_ssid     # your network/hotspot/ssid name.
 passw=bps_passw    # your network/hotspot/ssid password.
 
 
 ADAFRUIT_IO_URL     = 'io.adafruit.com' 
-ADAFRUIT_USERNAME   = ada_user
-ADAFRUIT_IO_KEY     = ada_tok
+ADAFRUIT_IO_USERNAME = "bps235"
+ADAFRUIT_IO_KEY = ada_tok
+
 
 TOGGLE_FEED_ID      = 'led'
 
@@ -31,8 +32,6 @@ sta.active(True)
 print(sta.scan())
 sta.connect(ssid,passw)  # connecting to network.
 sleep_ms(200)
-print("connection status : ", sta.isconnected())
-
 
 while sta.isconnected()==False:
     pass
@@ -44,13 +43,13 @@ if sta.isconnected():
 
 client = MQTTClient(client_id=mqtt_client_id, 
                     server=ADAFRUIT_IO_URL, 
-                    user=ADAFRUIT_USERNAME, 
+                    user=ADAFRUIT_IO_USERNAME, 
                     password=ADAFRUIT_IO_KEY,
                     ssl=False)
                     
 try:            
     client.connect()
-    print("client connected : ", client.is_connected())
+    print("client connected :")
 except Exception as e:
     print('could not connect to MQTT server {}{}'.format(type(e).__name__, e))
     print(mqtt_client_id)
@@ -67,7 +66,7 @@ def cb(topic, msg):                             # Callback function
         x.on()
         
         
-toggle_feed = bytes('{:s}/feeds/{:s}'.format(ADAFRUIT_USERNAME, TOGGLE_FEED_ID), 'utf-8')   
+toggle_feed = bytes('{:s}/feeds/{:s}'.format(ADAFRUIT_IO_USERNAME, TOGGLE_FEED_ID), 'utf-8')   
 client.set_callback(cb)      # Callback function               
 client.subscribe(toggle_feed) # Subscribing to particular topic
 

@@ -57,7 +57,7 @@ so.listen(3)
 
 while True:
   try:
-    x.toggle()
+    x.value(not x.value())
     if gc.mem_free() < 102000:
       gc.collect()
     conn, addr = so.accept()

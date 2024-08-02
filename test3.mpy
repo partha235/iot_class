@@ -78,7 +78,7 @@ while True:
             print("\nled off\n")
             led.off()
         response=web_page()
-        conn.send('HTTP/1.1 200 OK\n')
+        conn.send('HTTPS/1.1 200 OK\n')
         conn.send('Connection: text/html\n')
         conn.send('Connection: close\n\n')
         conn.sendall(response)

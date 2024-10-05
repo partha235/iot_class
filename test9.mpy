@@ -1,0 +1,19 @@
+import network
+from machine import Pin
+import gc
+
+# Enable garbage collection
+gc.collect()
+
+# Configure and enable access point (AP) mode
+ap = network.WLAN(network.AP_IF)
+ap.active(True)
+
+# Set static IP address configuration (IP, Subnet, Gateway, DNS)
+ap.ifconfig(('192.168.4.23', '255.255.255.0', '192.168.4.1', '8.8.8.8'))
+
+# Set AP SSID and password
+ap.config(essid='bps', password='bps12345')
+
+# Print connection details
+print("AP is active with IP Configuration:", ap.ifconfig())

@@ -1,6 +1,6 @@
 from machine import Pin
 from time import sleep_ms
-x=Pin(23,Pin.OUT)
+x=Pin(13,Pin.OUT)
 while True:
     x.on()
     sleep_ms(200)

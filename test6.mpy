@@ -1,3 +1,4 @@
+# this code works with adafruit-io web host for streaming sensor data and control.  
 from umqtt.robust import MQTTClient
 from utime import sleep_ms,sleep
 import network 
@@ -20,7 +21,7 @@ passw=bps_passw    # your network/hotspot/ssid password.
 
 
 ADAFRUIT_IO_URL     = 'io.adafruit.com' 
-ADAFRUIT_IO_USERNAME = "bps235"
+ADAFRUIT_IO_USERNAME = ada_user
 ADAFRUIT_IO_KEY = ada_tok
 
 
